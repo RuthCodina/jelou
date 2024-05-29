@@ -9,7 +9,7 @@ router.get('', async (req, res) => {
     }
     try {
         const data = await post.find()
-        res.render('index', {locals, data})
+        res.render('index', {locals, data, currentRoute:'/'})
     } catch(error) {
         console.log(error)
     }
@@ -54,9 +54,12 @@ router.post('/search', async (req, res) => {
 })
 
 router.get('/about', (req, res) => {
-    res.render('about')
+    res.render('about', {
+        currentRoute:'/about'
+    })
 })
 
+// use this function to add post to add a post as example
 /*function insertPostData(){
     post.insertMany([
         {
